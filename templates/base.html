@@ -26,11 +26,24 @@
 <nav id="main-nav" class="navbar navbar-expand-md">
     <div class="container-xl">
 
- <!-- Logo -->
-        <a href="/" class="navbar-brand">
+
+        <!-- Logo -->
+        <a href="#" class="navbar-brand">
             <img src="{% static 'images/ForefrrontHQ_Logo_FHQ.svg' %}" alt="Forefront HQ" height="35">
         </a>
 
+
+        <!-- Burger -->
+        <button class="navbar-toggler" type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#mobileMenu"
+                aria-controls="mobileMenu"
+                aria-expanded="false"
+                aria-label="Toggle navigation">
+            <span class="burger-bar"></span>
+            <span class="burger-bar"></span>
+            <span class="burger-bar"></span>
+        </button>
 
         <!-- Links -->
         <div class="collapse navbar-collapse" id="mobileMenu">
@@ -42,6 +55,14 @@
                 <li class="nav-item"><a href="#" class="nav-link {% if request.resolver_match.url_name == 'portfolio' %}active{% endif %}">portfolio</a></li>
                 <li class="nav-item"><a href="#" class="nav-link {% if request.resolver_match.url_name == 'contact'   %}active{% endif %}">contact</a></li>
             </ul>
+
+            <!-- Auth buttons -->
+
+            {% if user.is_authenticated %}
+            <a href="#" class="btn btn-outline">Log out</a>
+            {% else %}
+            <a href="#" class="btn btn-primary">Login</a>
+            {% endif %}
 
 
     </div>
