@@ -44,3 +44,44 @@ p { color: #6B84A0; line-height: 1.7; }
     text-transform: uppercase;
     color: #1A6CF6;
 }
+
+/* Footer */
+
+#main-footer {
+    background: #0B1220;
+    border-top: 1px solid rgba(22, 41, 71, 0.6);
+    padding: 3rem 0 0;
+}
+ 
+.footer-logo { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.75rem; }
+ 
+.footer-tagline { font-size: 0.85rem; color: #6B84A0; max-width: 200px; }
+ 
+.footer-heading {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+    color: #1A6CF6;
+    margin-bottom: 1rem;
+}
+ 
+.footer-col ul { display: flex; flex-direction: column; gap: 0.6rem; }
+.footer-col ul li a { font-size: 0.875rem; color: #6B84A0; transition: color 0.2s; }
+.footer-col ul li a:hover { color: #E8EDF5; }
+ 
+.footer-bottom {
+    margin-top: 2rem;
+    padding: 1rem 0;
+    border-top: 1px solid rgba(22, 41, 71, 0.5);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+    font-size: 0.75rem;
+    color: #6B84A0;
+}
+ 
+.footer-legal { display: flex; gap: 1.5rem; }
+.footer-legal a { color: #6B84A0; transition: color 0.2s; }
+.footer-legal a:hover { color: #E8EDF5; }
