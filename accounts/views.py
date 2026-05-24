@@ -1,7 +1,9 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.contrib.auth import login, logout, authenticate
+from django.contrib import messages
 
 def home(request):
-    return render(request, 'base.html')
+    return render(request, 'home.html')
 
 def login_view(request):
     if request.user.is_authenticated:
@@ -21,3 +23,7 @@ def register_view(request):
     if request.user.is_authenticated:
         return redirect('home')
     return render(request, 'accounts/register.html')
+
+def logout_view(request):
+    logout(request)
+    return redirect('home')
