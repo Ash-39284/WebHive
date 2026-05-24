@@ -51,7 +51,8 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'webhive.urls'
+ROOT_URLCONF = 'forefront_hq.urls'
+WSGI_APPLICATION = 'forefront_hq.wsgi.application'
 
 TEMPLATES = [
     {
@@ -126,5 +127,4 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 STATICFILES_DIRS = [BASE_DIR / 'static']
 
-ROOT_URLCONF = 'forefront_hq.urls'
 WSGI_APPLICATION = 'forefront_hq.wsgi.application'
