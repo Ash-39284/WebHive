@@ -23,18 +23,23 @@
 <body>
 
     <!-- Navbar -->
-<nav>
+<nav id="main-nav" class="navbar navbar-expand-md">
+    <div class="container-xl">
 
-
-    
+ <!-- Logo -->
+        <a href="/" class="navbar-brand">
+            <img src="{% static 'images/ForefrrontHQ_Logo_FHQ.svg' %}" alt="Forefront HQ" height="35">
+        </a>
+        
+    </div>
 </nav>
 
 
 
     <!-- Main Content -->
-        {% block content %}
-
-        {% endblock %}
+        <main class="page-enter">
+            {% block content %}{% endblock %}
+        </main>
 
 
 <!-- Footer -->
