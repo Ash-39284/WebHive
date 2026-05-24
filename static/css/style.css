@@ -45,6 +45,29 @@ p { color: #6B84A0; line-height: 1.7; }
     color: #1A6CF6;
 }
 
+/* Navbar */
+
+#main-nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(8, 13, 20, 0.85);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid rgba(22, 41, 71, 0.7);
+}
+ 
+.nav-link {
+    font-size: 0.875rem;
+    color: #6B84A0 !important;
+    padding: 0.3rem 0.75rem !important;
+    border-radius: 0.4rem;
+    transition: color 0.2s;
+}
+.nav-link:hover { color: #E8EDF5 !important; }
+.nav-link.active { color: #E8EDF5 !important; background: #162947; }
+ 
+.nav-auth { display: flex; align-items: center; gap: 0.75rem; }
+
 /* Footer */
 
 #main-footer {
