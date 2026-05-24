@@ -26,8 +26,7 @@ SECRET_KEY = 'django-insecure-gtmblg9s2)5t^4t5=vrohyzf97h*hsqzkjps*qj41_b)oexe()
 DEBUG = False
 
 
-
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'webhive-ca8f62799334.herokuapp.com']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'forefront-hq.herokuapp.com']
 
 
 # Application definition
@@ -126,3 +125,6 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 STATICFILES_DIRS = [BASE_DIR / 'static']
+
+ROOT_URLCONF = 'forefront_hq.urls'
+WSGI_APPLICATION = 'forefront_hq.wsgi.application'

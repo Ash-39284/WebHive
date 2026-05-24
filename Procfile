@@ -1,1 +1,1 @@
-web: gunicorn webhive.wsgi
+web: gunicorn forefront_hq.wsgi
