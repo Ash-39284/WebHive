@@ -68,6 +68,18 @@
     </div>
 </nav>
 
+<!-- Messages -->
+{% if messages %}
+<div class="container-xl messages-wrapper" aria-live="polite">
+    {% for message in messages %}
+    <div class="fhq-alert fhq-alert-{{ message.tags|default:'info' }}">
+        <span>{{ message }}</span>
+        <button onclick="this.parentElement.remove()" aria-label="Dismiss" class="alert-close">✕</button>
+    </div>
+    {% endfor %}
+</div>
+{% endif %}
+
 <!-- Main Content -->
 <main class="page-enter">
     {% block content %}{% endblock %}

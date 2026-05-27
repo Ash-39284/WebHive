@@ -314,3 +314,26 @@ p { color: #6B84A0; line-height: 1.7; }
 .footer-legal { display: flex; gap: 1.5rem; }
 .footer-legal a { color: #6B84A0; transition: color 0.2s; }
 .footer-legal a:hover { color: #E8EDF5; }
+
+/* Alerts / Messages */
+.messages-wrapper { margin-top: 1.25rem; }
+ 
+.fhq-alert {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.8rem 1rem;
+    border-radius: 0.5rem;
+    font-size: 0.875rem;
+    margin-bottom: 0.75rem;
+    border: 1px solid transparent;
+}
+ 
+.fhq-alert-success { background: rgba(16,185,129,0.1); border-color: rgba(16,185,129,0.3); color: #34d399; }
+.fhq-alert-error   { background: rgba(239,68,68,0.1);  border-color: rgba(239,68,68,0.3);  color: #f87171; }
+.fhq-alert-info    { background: rgba(26,108,246,0.1); border-color: rgba(26,108,246,0.3); color: #60a5fa; }
+.fhq-alert-warning { background: rgba(245,158,11,0.1); border-color: rgba(245,158,11,0.3); color: #fbbf24; }
+ 
+.alert-close { background: transparent; border: none; cursor: pointer; color: inherit; opacity: 0.5; font-size: 0.875rem; }
+.alert-close:hover { opacity: 1; }

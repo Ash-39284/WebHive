@@ -69,4 +69,5 @@ def register_view(request):
 # Logs the user out and redirects to home
 def logout_view(request):
     logout(request)
+    messages.success(request, 'You have been successfully logged out.')
     return redirect('home')
