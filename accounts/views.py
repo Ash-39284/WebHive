@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, logout, authenticate
 from django.contrib import messages
+from django.contrib.auth.models import User
 
 # Renders the homepage
 def home(request):
@@ -58,6 +59,7 @@ def register_view(request):
             email=email,
             password=password1
         )
+        user.backend = 'django.contrib.auth.backends.ModelBackend'
         login(request, user)
         messages.success(request, 'Account created successfully. Welcome!')
         return redirect('home')
