@@ -28,7 +28,7 @@
 
 
         <!-- Logo -->
-        <a href="#" class="navbar-brand">
+        <a href="{% url 'home' %}" class="navbar-brand">
             <img src="{% static 'images/ForefrrontHQ_Logo_FHQ.svg' %}" alt="Forefront HQ" height="35">
         </a>
 
@@ -48,7 +48,7 @@
         <!-- Links -->
         <div class="collapse navbar-collapse" id="mobileMenu">
             <ul class="navbar-nav mx-auto">
-                <li class="nav-item"><a href="#" class="nav-link {% if request.resolver_match.url_name == 'home'      %}active{% endif %}">home</a></li>
+                <li class="nav-item"><a href="{% url 'home' %}" class="nav-link {% if request.resolver_match.url_name == 'home'      %}active{% endif %}">home</a></li>
                 <li class="nav-item"><a href="#" class="nav-link {% if request.resolver_match.url_name == 'about'     %}active{% endif %}">about</a></li>
                 <li class="nav-item"><a href="#" class="nav-link {% if request.resolver_match.url_name == 'services'  %}active{% endif %}">services</a></li>
                 <li class="nav-item"><a href="#" class="nav-link {% if request.resolver_match.url_name == 'packages'  %}active{% endif %}">packages</a></li>
@@ -84,7 +84,9 @@
             <!-- Brand -->
             <div class="col-12 col-md-4 footer-brand">
                 <div class="footer-logo">
-                    <div class="logo-icon logo-icon--sm">FH</div>
+                    <a href="{% url 'home' %}" class="logo-brand logo-sm">
+                        <img src="{% static 'images/ForefrrontHQ_Logo_FHQ.svg' %}" alt="Forefront HQ" height="30">
+                    </a>
                     <span class="logo-text">Forefront HQ</span>
                 </div>
                 <p class="footer-tagline">Solo software developer helping startups and small businesses grow online.</p>
@@ -94,7 +96,7 @@
             <div class="col-6 col-md-2 footer-col">
                 <p class="footer-heading">Navigation</p>
                 <ul>
-                    <li><a href="/">Home</a></li>
+                    <li><a href="{% url 'home' %}">Home</a></li>
                     <li><a href="/about/">About</a></li>
                     <li><a href="/services/">Services</a></li>
                     <li><a href="/packages/">Packages</a></li>
