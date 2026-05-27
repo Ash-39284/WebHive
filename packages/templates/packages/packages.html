@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Packages{% endblock %}
+
+{% block content %}
+<section class="packages-section">
+    <div class="container-xl">
+
+        <!-- Header -->
+        <div class="packages-header">
+            <h1 class="packages-title">Scaled solutions for digital ecosystems.</h1>
+            <p class="packages-sub">Transparent technical frameworks designed for precision growth. Select the engine that powers your next deployment.</p>
+        </div>
+
+        <!-- Cards -->
+        <div class="row g-4">
+            {% for package in packages %}
+            <div class="col-12 col-md-6 col-lg-3">
+                <div class="package-card {% if package.is_recommended %}package-card--recommended{% endif %}">
+
+                    {% if package.is_recommended %}
+                    <div class="package-recommended-badge">Recommended</div>
+                    {% endif %}
+
+                    <!-- Name -->
+                    <h2 class="package-name {% if package.is_recommended %}package-name--recommended{% endif %}">
+                        {{ package.name }}
+                    </h2>
+
+                    <!-- Price -->
+                    <div class="package-price">
+                        {% if package.price %}
+                            <span class="package-price-amount">£{{ package.price|floatformat:0 }}</span>
+                            <span class="package-price-label">ONE-TIME</span>
+                        {% else %}
+                            <span class="package-price-amount">Custom</span>
+                            <span class="package-price-label">TAILORED</span>
+                        {% endif %}
+                    </div>
+
+                    <!-- Features -->
+                    <ul class="package-features">
+                        {% for feature in package.features.all %}
+                        <li class="package-feature">
+                            <span class="package-feature-icon">—</span>
+                            {{ feature.feature_text }}
+                        </li>
+                        {% endfor %}
+                    </ul>
+
+                    <!-- CTA -->
+                    <div class="package-cta">
+                        {% if package.price %}
+                            {% if user.is_authenticated %}
+                                <a href="#" class="btn {% if package.is_recommended %}btn-primary{% else %}btn-outline{% endif %} btn-full package-btn">
+                                    {{ package.cta_label }}
+                                </a>
+                            {% else %}
+                                <a href="/login/" class="btn {% if package.is_recommended %}btn-primary{% else %}btn-outline{% endif %} btn-full package-btn">
+                                    {{ package.cta_label }}
+                                </a>
+                            {% endif %}
+                        {% else %}
+                            <a href="/contact/" class="btn btn-outline btn-full package-btn">
+                                {{ package.cta_label }}
+                            </a>
+                        {% endif %}
+                    </div>
+
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+    </div>
+</section>
+{% endblock %}
