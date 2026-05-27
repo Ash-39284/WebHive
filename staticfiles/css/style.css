@@ -83,7 +83,7 @@ p { color: #6B84A0; line-height: 1.7; }
 .nav-link:hover { color: #E8EDF5 !important; }
 .nav-link.active { color: #E8EDF5 !important; background: #162947; }
 
-.nav-auth { display: flex; align-items: center; gap: 0.75rem; }
+.nav-auth { display: flex; align-items: center; gap: 1.25rem; }
 
 .navbar-toggler { border: none; background: transparent; padding: 4px; display: flex; flex-direction: column; gap: 5px; }
 .navbar-toggler:focus { box-shadow: none; }
