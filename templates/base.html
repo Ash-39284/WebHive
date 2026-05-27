@@ -74,7 +74,7 @@
     {% for message in messages %}
     <div class="fhq-alert fhq-alert-{{ message.tags|default:'info' }}">
         <span>{{ message }}</span>
-        <button onclick="this.parentElement.remove()" aria-label="Dismiss" class="alert-close">✕</button>
+        <span onclick="this.parentElement.remove()" aria-label="Dismiss" class="alert-close">✕</span>
     </div>
     {% endfor %}
 </div>
