@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Complete Sign Up | Forefront HQ{% endblock %}
+
+{% block content %}
+<div class="auth-wrapper">
+    <div class="auth-card">
+
+        <h1 class="auth-title">Complete sign up</h1>
+        <p class="auth-sub">
+            We just need to confirm a few details from your Google account.
+        </p>
+
+        <form method="POST">
+            {% csrf_token %}
+
+            {% if form.errors %}
+            <div class="auth-error">Please correct the errors below.</div>
+            {% endif %}
+
+            {% for field in form %}
+            <div class="form-group">
+                <label class="field-label">{{ field.label }}</label>
+                <input type="{{ field.field.widget.input_type }}"
+                       name="{{ field.html_name }}"
+                       class="field"
+                       value="{{ field.value|default:'' }}"
+                       {% if field.field.required %}required{% endif %}>
+                {% if field.errors %}
+                <div class="auth-error" style="margin-top: 0.4rem;">{{ field.errors|join:", " }}</div>
+                {% endif %}
+            </div>
+            {% endfor %}
+
+            <button type="submit" class="btn btn-primary btn-full">Complete sign up</button>
+        </form>
+
+    </div>
+</div>
+{% endblock %}
