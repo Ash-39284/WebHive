@@ -9,6 +9,7 @@ class Package(models.Model):
     is_active = models.BooleanField(default=True)
     display_order = models.IntegerField(default=0)
     cta_label = models.CharField(max_length=100)
+    stripe_price_id = models.CharField(max_length=100, blank=True, null=True)
 
     class Meta:
         ordering = ['display_order']
