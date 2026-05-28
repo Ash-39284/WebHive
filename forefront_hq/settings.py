@@ -3,6 +3,7 @@ import os
 from dotenv import load_dotenv
 load_dotenv()
 
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = 'django-insecure-gtmblg9s2)5t^4t5=vrohyzf97h*hsqzkjps*qj41_b)oexe()'

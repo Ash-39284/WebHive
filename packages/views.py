@@ -3,6 +3,8 @@ from django.conf import settings
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from .models import Package
+from django.views.decorators.csrf import csrf_exempt
+from django.http import HttpResponse
 
 stripe.api_key = settings.STRIPE_SECRET_KEY
 
@@ -34,3 +36,28 @@ def checkout(request, package_id):
 
 def success(request):
     return render(request, 'packages/success.html')
+
+@csrf_exempt
+def stripe_webhook(request):
+    payload = request.body
+    sig_header = request.META.get('HTTP_STRIPE_SIGNATURE')
+    
+    try:
+        event = stripe.Webhook.construct_event(
+            payload, sig_header, settings.STRIPE_WEBHOOK_SECRET
+        )
+    except ValueError:
+        return HttpResponse(status=400)
+    except stripe.error.SignatureVerificationError:
+        return HttpResponse(status=400)
+
+    if event['type'] == 'checkout.session.completed':
+        session = event['data']['object']
+        package_id = session['metadata']['package_id']
+        user_id = session['metadata']['user_id']
+        amount = session['amount_total']
+        
+        # Log to console for now — order creation comes in next release
+        print(f'Payment received: Package {package_id} by User {user_id} for £{amount/100}')
+
+    return HttpResponse(status=200)
