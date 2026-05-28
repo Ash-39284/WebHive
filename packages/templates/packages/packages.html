@@ -53,7 +53,7 @@
                     <div class="package-cta">
                         {% if package.price %}
                             {% if user.is_authenticated %}
-                                <a href="#" class="btn {% if package.is_recommended %}btn-primary{% else %}btn-outline{% endif %} btn-full package-btn">
+                                <a href="/packages/checkout/{{ package.id }}/" class="btn {% if package.is_recommended %}btn-primary{% else %}btn-outline{% endif %} btn-full package-btn">
                                     {{ package.cta_label }}
                                 </a>
                             {% else %}
