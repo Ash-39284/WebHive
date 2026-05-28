@@ -41,7 +41,7 @@ def success(request):
 def stripe_webhook(request):
     payload = request.body
     sig_header = request.META.get('HTTP_STRIPE_SIGNATURE')
-    
+
     try:
         event = stripe.Webhook.construct_event(
             payload, sig_header, settings.STRIPE_WEBHOOK_SECRET
@@ -56,8 +56,40 @@ def stripe_webhook(request):
         package_id = session['metadata']['package_id']
         user_id = session['metadata']['user_id']
         amount = session['amount_total']
-        
-        # Log to console for now — order creation comes in next release
-        print(f'Payment received: Package {package_id} by User {user_id} for £{amount/100}')
+        email = session.get('customer_email', '')
+        payment_intent = session.get('payment_intent', '')
+        customer_id = session.get('customer', '')
+
+        try:
+            from django.contrib.auth.models import User
+            from accounts.models import UserProfile
+            from orders.models import Order, Payment
+
+            user = User.objects.get(id=user_id)
+            profile = UserProfile.objects.get(user=user)
+            package = Package.objects.get(id=package_id)
+
+            order = Order.objects.create(
+                user_profile=profile,
+                package=package,
+                full_name=user.get_full_name() or email,
+                email=email,
+                order_total=amount / 100,
+                status='paid'
+            )
+
+            Payment.objects.create(
+                order=order,
+                stripe_payment_intent=payment_intent,
+                stripe_customer_id=customer_id or '',
+                amount=amount / 100,
+                currency='gbp',
+                status='succeeded'
+            )
+
+            print(f'Order {order.id} created for {email}')
+
+        except Exception as e:
+            print(f'Webhook error: {e}')
 
     return HttpResponse(status=200)
