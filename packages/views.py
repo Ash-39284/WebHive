@@ -56,9 +56,9 @@ def stripe_webhook(request):
         package_id = session['metadata']['package_id']
         user_id = session['metadata']['user_id']
         amount = session['amount_total']
-        email = session.get('customer_email', '')
-        payment_intent = session.get('payment_intent', '')
-        customer_id = session.get('customer', '')
+        email = session['customer_email'] or ''
+        payment_intent = session['payment_intent'] or ''
+        customer_id = session['customer'] or ''
 
         try:
             from django.contrib.auth.models import User
@@ -66,7 +66,8 @@ def stripe_webhook(request):
             from orders.models import Order, Payment
 
             user = User.objects.get(id=user_id)
-            profile = UserProfile.objects.get(user=user)
+            user = User.objects.get(id=user_id)
+            profile, created = UserProfile.objects.get_or_create(user=user)
             package = Package.objects.get(id=package_id)
 
             order = Order.objects.create(
