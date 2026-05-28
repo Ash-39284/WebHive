@@ -26,6 +26,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.google',
     'accounts',
     'packages',
+    'orders',
 ]
 
 SITE_ID = 1
